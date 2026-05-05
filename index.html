@@ -2740,6 +2740,916 @@
         transform: scale(1.03);
       }
     }
+
+    #watchSection {
+      background: var(--bg-deep);
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    #watchSection .watch-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: calc(var(--top-bar-height) + var(--nav-height));
+      z-index: 50;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+
+    #watchSection .watch-breadcrumb button {
+      min-height: 36px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #watchSection .watch-breadcrumb button:hover,
+    #watchSection .watch-breadcrumb button:focus-visible {
+      color: var(--gold-light);
+    }
+
+    #watchBreadcrumbLabel {
+      color: var(--text-secondary);
+      font-size: 13px;
+      flex: 1;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #watchSection .watch-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      min-height: calc(100vh - 200px);
+      align-items: start;
+    }
+
+    #watchSection .watch-player-col {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #watchSection #playerFrameWrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      grid-column: 1;
+    }
+
+    #watchSection #playerFrameWrap:fullscreen,
+    #watchSection #playerFrameWrap:-webkit-full-screen {
+      width: 100vw;
+      height: 100vh;
+      max-height: none;
+      aspect-ratio: auto;
+      border-radius: 0;
+      border: 0;
+      background: #000;
+    }
+
+    #watchSection #playerFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #000;
+    }
+
+    #watchSection .player-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px 16px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      grid-column: 1;
+    }
+
+    #watchSection .watch-player-copy {
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    #watchSection #playerTitle {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    #watchSection #playerSubtitle {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #watchSection .player-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    #watchSection .player-source-button {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: 'Syne', sans-serif;
+      transition: all 0.15s ease;
+    }
+
+    #watchSection .player-source-button:hover,
+    #watchSection .player-source-button:focus-visible {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--border-accent);
+    }
+
+    #watchSection .player-source-button.is-active {
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-weight: 700;
+      border-color: var(--gold);
+      box-shadow: none;
+    }
+
+    #watchSection .frame-control-button {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      box-shadow: none;
+    }
+
+    #watchSection .frame-control-button:hover,
+    #watchSection .frame-control-button:focus-visible {
+      border-color: var(--border-accent);
+      background: var(--bg-hover);
+    }
+
+    #watchSection .frame-control-button.is-active {
+      background: var(--gold);
+      color: var(--bg-deep);
+      border-color: var(--gold);
+      box-shadow: none;
+    }
+
+    #watchSection .player-controls-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      grid-column: 1;
+    }
+
+    #watchSection .watch-player-status {
+      justify-content: space-between;
+    }
+
+    #watchSection .watch-player-status .player-status-pill {
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      pointer-events: auto;
+    }
+
+    #watchSection .watch-player-status #playerShortcutHint {
+      color: var(--text-secondary);
+    }
+
+    #watchSection #episodeControls {
+      grid-column: 1;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    #watchSection #episodeControls[hidden],
+    #watchSection #episodeStrip[hidden] {
+      display: none !important;
+    }
+
+    #watchSection .watch-episode-selectors {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    #watchSection .watch-select {
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      padding: 0 14px;
+      outline: 0;
+    }
+
+    #watchSection .watch-episode-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #watchSection .watch-episode-actions .mini-button {
+      min-height: 40px;
+    }
+
+    #watchSection #episodeSummary {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    #watchSection .ep-strip-wrap {
+      grid-column: 1;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px;
+    }
+
+    #watchSection .ep-pills-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    #watchSection .ep-pills-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    #watchSection .ep-pill {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 13px;
+      font-family: 'Syne', sans-serif;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    #watchSection .ep-pill:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    #watchSection .ep-pill.active {
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-weight: 700;
+      border-color: var(--gold);
+    }
+
+    #watchSection #episodeInfo {
+      margin-top: 10px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    #watchSection .watch-about {
+      padding: 28px 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    #watchSection .watch-about-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      grid-column: 1;
+    }
+
+    #watchSection .watch-about-header h3,
+    #watchSection .watch-section-block h4 {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    #watchSection .watch-section-bar {
+      width: 3px;
+      height: 24px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+      flex-shrink: 0;
+    }
+
+    #watchSection .watch-about-title-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      align-items: start;
+      grid-column: 1;
+    }
+
+    #watchSection .watch-about-title-row > div {
+      min-width: 0;
+    }
+
+    #watchSection .watch-about-title-row:has(#aboutTitle:empty) {
+      display: none;
+    }
+
+    #watchSection #aboutPoster {
+      width: 64px;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border-accent);
+      background: var(--bg-card);
+    }
+
+    #watchSection #aboutPoster[src=""] {
+      display: none;
+    }
+
+    #watchSection #aboutTitle {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    #watchSection .watch-about-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+    }
+
+    #watchSection #aboutRating {
+      color: var(--gold-light);
+    }
+
+    #watchSection #aboutGenres {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    #watchSection #aboutGenres:empty,
+    #watchSection #aboutOverview:empty {
+      display: none;
+    }
+
+    #watchSection #aboutOverview {
+      grid-column: 1;
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    #watchSection #watchStoryPanel {
+      grid-column: 1;
+      padding: 22px 20px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, var(--bg-card), var(--bg-primary)),
+        var(--bg-card);
+      border: 1px solid var(--border);
+    }
+
+    #watchSection .watch-story-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    #watchSection .watch-story-header h3 {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    #watchSection .watch-story p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    #watchSection .watch-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    #watchSection .watch-fact {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    #watchSection .watch-fact span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #watchSection .watch-fact strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    #watchSection .watch-section-block {
+      display: grid;
+      gap: 14px;
+      grid-column: 1;
+    }
+
+    #watchSection .watch-cast-section:has(#castGrid:empty) {
+      display: none;
+    }
+
+    #watchSection .watch-cast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 12px;
+    }
+
+    #watchSection .watch-cast-item {
+      text-align: center;
+    }
+
+    #watchSection .watch-cast-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-accent);
+      margin: 0 auto 6px;
+      display: block;
+      background: var(--bg-card);
+    }
+
+    #watchSection .watch-cast-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #watchSection .watch-cast-role {
+      font-size: 10px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #watchSection .watch-similar-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(150px, 180px);
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    #watchSection .watch-similar-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    #watchSection #watchSimilarGrid .media-card,
+    #watchSection #watchSimilarGrid .card-hit-area {
+      width: 100%;
+    }
+
+    #watchSection #watchSimilarGrid .media-card {
+      min-width: 0;
+      scroll-snap-align: start;
+    }
+
+    #watchSection #watchSimilarGrid .empty-placeholder {
+      min-width: min(320px, 100%);
+    }
+
+    #watchSection #playerMetaPanel {
+      background: var(--bg-primary);
+      border-left: 1px solid var(--border);
+      padding: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-accent) transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    #watchSection #playerMetaPanel .meta-poster {
+      display: grid;
+      gap: 16px;
+    }
+
+    #watchSection #playerMetaPanel .meta-poster img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border-accent);
+      background: var(--bg-card);
+    }
+
+    #watchSection #playerMetaPanel .meta-overline {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    #watchSection #playerMetaPanel .meta-title {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.45rem;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+
+    #watchSection #playerMetaPanel .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    #watchSection #playerMetaPanel .meta-bullet {
+      min-height: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+
+    #watchSection #playerMetaPanel .genre-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    #watchSection #playerMetaPanel .meta-overview {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    #watchSection #playerMetaPanel .info-section {
+      display: grid;
+      gap: 12px;
+    }
+
+    #watchSection #playerMetaPanel .info-section h3 {
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    #watchSection #playerMetaPanel .cast-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    #watchSection #playerMetaPanel .cast-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      min-width: 0;
+    }
+
+    #watchSection #playerMetaPanel .cast-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border-accent);
+      flex-shrink: 0;
+      background: var(--bg-card);
+    }
+
+    #watchSection #playerMetaPanel .cast-card strong,
+    #watchSection #playerMetaPanel .cast-card span {
+      display: block;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #watchSection #playerMetaPanel .cast-card strong {
+      color: var(--text-primary);
+      font-size: 11px;
+      margin: 0;
+    }
+
+    #watchSection #playerMetaPanel .cast-card span {
+      color: var(--text-secondary);
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    #watchSection .watch-sidebar-col {
+      display: none;
+    }
+
+    #watchSection.is-theater .watch-layout {
+      grid-template-columns: 1fr;
+    }
+
+    #watchSection #streamLoader {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      background: rgba(7, 8, 13, 0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.5s ease;
+    }
+
+    #watchSection .stream-loader-title {
+      font-family: 'Syne', sans-serif;
+      color: var(--text-primary);
+      font-size: 20px;
+      margin: 0;
+    }
+
+    #watchSection .stream-loader-copy {
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin: 0;
+      max-width: 260px;
+      line-height: 1.7;
+    }
+
+    #watchSection .loader-progress-bar {
+      width: 180px;
+      height: 3px;
+      background: var(--gold-dim);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #watchSection .loader-progress-bar::after {
+      content: '';
+      position: absolute;
+      left: -60%;
+      top: 0;
+      bottom: 0;
+      width: 60%;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      animation: sweep 1.8s ease-in-out infinite;
+    }
+
+    @media (min-width: 900px) {
+      #watchSection .watch-player-col,
+      #watchSection .watch-about {
+        display: contents;
+      }
+
+      #watchSection #playerFrameWrap,
+      #watchSection .player-header,
+      #watchSection .player-controls-bar,
+      #watchSection #episodeControls,
+      #watchSection #episodeStrip,
+      #watchSection .watch-about-header,
+      #watchSection .watch-about-title-row,
+      #watchSection #aboutOverview,
+      #watchSection #watchStoryPanel,
+      #watchSection .watch-section-block {
+        grid-column: 1;
+      }
+
+      #watchSection .player-header,
+      #watchSection .player-controls-bar,
+      #watchSection #episodeControls,
+      #watchSection #episodeStrip,
+      #watchSection .watch-about-header,
+      #watchSection .watch-about-title-row,
+      #watchSection #aboutOverview,
+      #watchSection #watchStoryPanel,
+      #watchSection .watch-section-block {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      #watchSection #playerFrameWrap {
+        border-radius: 0;
+      }
+
+      #watchSection #playerMetaPanel {
+        grid-column: 2;
+        grid-row: 1 / span 24;
+        position: sticky;
+        top: calc(var(--top-bar-height) + var(--nav-height) + 53px);
+        height: calc(100vh - var(--top-bar-height) - var(--nav-height) - 53px);
+        overflow-y: auto;
+      }
+
+      #watchSection.is-theater #playerMetaPanel {
+        display: none;
+      }
+    }
+
+    @media (max-width: 899px) {
+      #watchSection {
+        padding-bottom: 28px;
+      }
+
+      #watchSection .watch-layout {
+        grid-template-columns: 1fr;
+      }
+
+      #watchSection #playerFrameWrap {
+        aspect-ratio: 16 / 9;
+        border-radius: 0;
+      }
+
+      #watchSection .player-header {
+        padding: 16px;
+      }
+
+      #watchSection .player-actions {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+
+      #watchSection .player-actions::-webkit-scrollbar {
+        display: none;
+      }
+
+      #watchSection .player-actions > * {
+        flex-shrink: 0;
+      }
+
+      #watchSection .watch-player-status {
+        align-items: flex-start;
+      }
+
+      #watchSection .watch-player-status .player-status-pill {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      #watchSection #episodeControls {
+        padding: 14px 16px;
+      }
+
+      #watchSection .watch-episode-selectors {
+        grid-template-columns: 1fr;
+      }
+
+      #watchSection .watch-about {
+        padding: 20px 16px;
+      }
+
+      #watchSection .watch-cast-grid {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      }
+
+      #watchSection #playerMetaPanel {
+        position: static;
+        height: auto;
+        overflow: visible;
+        border-left: 0;
+        border-top: 1px solid var(--border);
+        padding: 20px 0 0;
+        background: transparent;
+      }
+
+      #watchSection #playerMetaPanel .cast-strip {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(88px, 1fr);
+        gap: 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+
+      #watchSection #playerMetaPanel .cast-strip::-webkit-scrollbar {
+        display: none;
+      }
+
+      #watchSection #playerMetaPanel .cast-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+      }
+
+      #watchSection #playerMetaPanel .cast-avatar {
+        width: 56px;
+        height: 56px;
+      }
+
+      #watchSection #watchSimilarGrid {
+        grid-auto-flow: unset;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow: visible;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #watchSection .watch-breadcrumb {
+        padding: 10px 16px;
+      }
+
+      #watchBreadcrumbLabel {
+        order: 3;
+        flex-basis: 100%;
+        text-align: left;
+      }
+
+      #watchSection #watchSimilarGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2884,89 +3794,122 @@
       </div>
     </section>
 
-    <section class="watch-section is-faded" id="watchSection" hidden aria-labelledby="playerTitle">
-      <div class="watch-shell">
-        <div class="breadcrumb watch-breadcrumb">
-          <button id="watchBackButton">&larr; Back to Browse</button>
-          <span>/</span>
-          <span id="watchBreadcrumbLabel">Watch</span>
-        </div>
+    <section class="watch-page watch-section is-faded" id="watchSection" hidden aria-labelledby="playerTitle">
+      <div class="watch-breadcrumb">
+        <button id="watchBackButton" type="button">&larr; Back</button>
+        <span id="watchBreadcrumbLabel">Watch</span>
+        <button id="watchShareButton" type="button">Share</button>
+      </div>
 
-        <div class="player-shell">
+      <div class="watch-layout">
+        <div class="watch-player-col">
+          <div id="playerFrameWrap">
+            <div id="streamLoader">
+              <div class="gold-spinner"></div>
+              <h3 class="stream-loader-title">Connecting your stream...</h3>
+              <p class="stream-loader-copy">Finding the best source for you...</p>
+              <div class="loader-progress-bar"></div>
+            </div>
+            <iframe
+              id="playerFrame"
+              src=""
+              allowfullscreen
+              allow="autoplay; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="origin-when-cross-origin"
+              title="Streaming player"
+            ></iframe>
+          </div>
+
           <div class="player-header">
-            <div class="player-title-wrap">
-              <h2 id="playerTitle">Now playing</h2>
-              <p id="playerSubtitle">Launching your stream...</p>
+            <div class="watch-player-copy">
+              <h2 id="playerTitle">Loading...</h2>
+              <p id="playerSubtitle">Preparing your stream...</p>
             </div>
-            <div class="player-actions" aria-label="Player source options">
-              <button class="mini-button player-source-button is-active" id="playerSourceSmooth" type="button">Smooth Player</button>
-              <button class="mini-button player-source-button" id="playerSourceCaptions" type="button">Captions Player</button>
+            <div class="player-actions" aria-label="Player source and view controls">
+              <button id="playerSourceSmooth" class="ghost-button player-source-button is-active" type="button">▶ Smooth</button>
+              <button id="playerSourceCaptions" class="ghost-button player-source-button" type="button">CC Captions</button>
+              <button id="playerViewToggle" class="frame-control-button" type="button" aria-pressed="false">
+                <span class="frame-control-icon" id="playerViewToggleIcon" aria-hidden="true"></span>
+                <span class="frame-control-label" id="playerViewToggleLabel">Wide View</span>
+              </button>
+              <button id="playerFullscreenToggle" class="frame-control-button" type="button" aria-pressed="false">
+                <span class="frame-control-icon" id="playerFullscreenToggleIcon" aria-hidden="true"></span>
+                <span class="frame-control-label" id="playerFullscreenToggleLabel">Full Screen</span>
+              </button>
             </div>
           </div>
 
-          <div class="player-body">
-            <div class="player-main">
-              <div class="player-frame" id="playerFrameWrap">
-                <div class="player-frame-toolbar" aria-label="Player display controls">
-                  <button class="frame-control-button" id="playerViewToggle" type="button" aria-pressed="false">
-                    <span class="frame-control-icon" id="playerViewToggleIcon"></span>
-                    <span class="frame-control-label" id="playerViewToggleLabel">Wide View</span>
-                  </button>
-                  <button class="frame-control-button" id="playerFullscreenToggle" type="button" aria-pressed="false">
-                    <span class="frame-control-icon" id="playerFullscreenToggleIcon"></span>
-                    <span class="frame-control-label" id="playerFullscreenToggleLabel">Full Screen</span>
-                  </button>
-                </div>
-                <div class="player-frame-status" aria-live="polite">
-                  <span class="player-status-pill" id="playerModeStatus">Standard view active</span>
-                  <span class="player-status-pill" id="playerShortcutHint">Smooth player active | Press F for full screen</span>
-                </div>
-                <div class="stream-loader" id="streamLoader">
-                  <div class="gold-spinner"></div>
-                  <h3 class="stream-loader-title">Connecting your stream...</h3>
-                  <p class="stream-loader-copy">Gathering metadata and finding the best source for you...</p>
-                  <div class="loader-progress-bar"></div>
-                </div>
-                <iframe
-                  id="playerFrame"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                  allowfullscreen
-                  referrerpolicy="origin-when-cross-origin"
-                  title="Streaming player"
-                ></iframe>
-              </div>
+          <div class="player-controls-bar watch-player-status" aria-live="polite">
+            <span class="player-status-pill" id="playerModeStatus">Standard view</span>
+            <span class="player-status-pill" id="playerShortcutHint">F = fullscreen · T = wide</span>
+          </div>
 
-              <div class="player-controls" id="episodeControls" hidden>
-                <div class="selector-grid">
-                  <div class="selector-field">
-                    <label for="seasonSelect">Season</label>
-                    <select id="seasonSelect"></select>
-                  </div>
-                  <div class="selector-field">
-                    <label for="episodeSelect">Episode</label>
-                    <select id="episodeSelect"></select>
-                  </div>
-                </div>
-                <div class="episode-toolbar">
-                  <button class="mini-button" id="prevEpisodeButton">&larr; Previous</button>
-                  <button class="mini-button" id="nextEpisodeButton">Next &rarr;</button>
-                </div>
-                <div class="episode-summary" id="episodeSummary"></div>
-              </div>
+          <div id="episodeControls" hidden>
+            <div class="watch-episode-selectors">
+              <select class="watch-select" id="seasonSelect" aria-label="Season"></select>
+              <select class="watch-select" id="episodeSelect" aria-label="Episode"></select>
+            </div>
+            <div class="watch-episode-actions">
+              <button class="mini-button" id="prevEpisodeButton" type="button">&larr; Prev</button>
+              <button class="mini-button" id="nextEpisodeButton" type="button">Next &rarr;</button>
+            </div>
+            <div id="episodeSummary"></div>
+          </div>
 
-              <section class="watch-story" id="watchStoryPanel" aria-live="polite"></section>
+          <div class="ep-strip-wrap" id="episodeStrip" hidden>
+            <div class="ep-pills-row" id="epPillsRow"></div>
+            <div id="episodeInfo"></div>
+          </div>
 
-              <section class="info-section">
-                <h3>You May Also Like</h3>
-                <div class="similar-grid" id="watchSimilarGrid"></div>
-              </section>
+          <div class="watch-about">
+            <div class="watch-about-header">
+              <div class="watch-section-bar"></div>
+              <h3>About This Title</h3>
             </div>
 
-            <aside class="player-sidebar">
-              <div class="meta-panel" id="playerMetaPanel"></div>
-            </aside>
+            <div class="watch-about-title-row">
+              <img id="aboutPoster" alt="poster" src="">
+              <div>
+                <h3 id="aboutTitle"></h3>
+                <div class="watch-about-meta">
+                  <span id="aboutRating"></span>
+                  <span id="aboutYear"></span>
+                  <span id="aboutRuntime"></span>
+                  <span id="aboutType"></span>
+                </div>
+                <div id="aboutGenres"></div>
+              </div>
+            </div>
+
+            <p id="aboutOverview"></p>
+            <div class="meta-panel" id="playerMetaPanel"></div>
+            <section class="watch-story" id="watchStoryPanel" aria-live="polite"></section>
+
+            <div class="watch-section-block watch-cast-section">
+              <h4>Cast &amp; Crew</h4>
+              <div class="watch-cast-grid" id="castGrid"></div>
+            </div>
+
+            <div class="watch-section-block watch-similar-section">
+              <h4>More Like This</h4>
+              <div class="watch-similar-row" id="watchSimilarGrid"></div>
+            </div>
           </div>
         </div>
+
+        <aside class="watch-sidebar-col" aria-hidden="true">
+          <img id="sidebarPoster" alt="poster" src="">
+          <h3 id="sidebarTitle"></h3>
+          <div class="sidebar-meta-row">
+            <span id="sidebarRating"></span>
+            <span id="sidebarYear"></span>
+            <span id="sidebarRuntime"></span>
+          </div>
+          <div id="sidebarGenres"></div>
+          <p id="sidebarOverview"></p>
+          <div class="sidebar-cast-grid" id="sidebarCast"></div>
+        </aside>
       </div>
     </section>
 
@@ -5073,6 +6016,7 @@
       showHome(false);
     }
 
+    dom.similarRow = document.getElementById('watchSimilarGrid');
     init();
   </script>
 </body>
